@@ -47,7 +47,6 @@ struct ContentView: View {
     }
 }
 
-/// Preview provider for `ContentView`.
 #Preview {
     ContentView()
 }
