@@ -15,7 +15,7 @@ import SwiftUI
 /// - Parameters:
 ///   - Value: A binding to a `Double` value representing the slider's current value (0-255).
 ///   - label: A `String` that specifies the label for the slider.
-struct Colorslider: View {
+struct colorslider: View {
     
     /// The value of the slider, bound to an external state variable.
     @Binding var Value: Double

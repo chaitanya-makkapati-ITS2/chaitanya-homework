@@ -34,9 +34,9 @@ struct ContentView: View {
                 .padding()
             
             // Sliders for adjusting the RGB values
-            Colorslider(Value: $redvalue , label: "Red")
-            Colorslider(Value: $greenvalue, label: "Green")
-            Colorslider(Value: $bluevalue, label: "Blue")
+            colorslider(Value: $redvalue , label: "Red")
+            colorslider(Value: $greenvalue, label: "Green")
+            colorslider(Value: $bluevalue, label: "Blue")
             
             // Button to set the color based on slider values
             Button("Set Color") {
