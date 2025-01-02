@@ -1,0 +1,29 @@
+@Tutorial(time:10) {
+    @Intro(title: "Building the Sliders") {
+        Start by adding sliders for Red, Green, and Blue values. Each slider will adjust its respective color component in real-time.
+    }
+
+    @Section(title: "Steps to Build Sliders") {
+        @ContentAndMedia {
+            add 
+            @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+        }
+        @Steps {
+            @Step {
+                Define `@State` variables for `red`, `green`, and `blue`.
+
+                @Code(name: "Add State Variables", file: "add-state-variables.swift"){
+                    
+                    @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+                    
+                }
+            }
+
+            @Step {
+                Implement a reusable `SliderView` for each color component.
+
+                @Code(name: "Slider View Code", file: "slider-view.swift")
+            }
+        }
+    }
+}
