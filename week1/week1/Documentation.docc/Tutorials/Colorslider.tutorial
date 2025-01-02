@@ -1,0 +1,22 @@
+@Tutorials(name: "Color Slider Project Tutorials") {
+    @Intro(title: "Getting Started with the Color Slider") {
+        Learn how to build and use the Color Slider app in SwiftUI. This tutorial covers setting up the sliders, previewing colors, and displaying the hex value.
+
+        @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+    }
+
+    @Chapter(name: "Setting Up the Sliders") {
+        @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+        @TutorialReference(tutorial: "doc:CreateSliders")
+    }
+
+    @Chapter(name: "Displaying the Selected Color") {
+        @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+        @TutorialReference(tutorial: "doc:PreviewColor")
+    }
+
+    @Chapter(name: "Adding the Hex Code") {
+        @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+        @TutorialReference(tutorial: "doc:DisplayHexCode")
+    }
+}

@@ -1,0 +1,27 @@
+@Tutorial(time:10) {
+    @Intro(title: "Display the Hex Code") {
+        Display the color as a hex code for better usability.
+    }
+
+    @Section(title: "Steps to Add Hex Code") {
+        @ContentAndMedia {
+            add 
+            @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+        }
+        
+        @Steps {
+            @Step {
+                Write a computed property to convert RGB values to a hex string.
+
+                @Code(name: "Hex Code Conversion", file: hex-code-conversion.swift)
+            }
+
+            @Step {
+                Display the hex code below the sliders.
+
+                @Code(name: "Add Hex Code Text", file: hex-code-text.swift)
+            }
+        }
+    }
+}
+

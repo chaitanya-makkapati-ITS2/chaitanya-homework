@@ -1,0 +1,20 @@
+@Tutorial(time:15) {
+    @Intro(title: "Previewing the Color") {
+        Learn how to create a real-time preview of the selected color using a `Rectangle` view.
+    }
+
+    @Section(title: "Steps to Display Color") {
+        @ContentAndMedia {
+            add 
+            @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+        }
+        @Steps {
+            @Step {
+                Use a `Rectangle` to preview the current color.
+
+                @Code(name: "Rectangle Preview Code", file: rectangle-preview.swift)
+            }
+        }
+    }
+}
+
