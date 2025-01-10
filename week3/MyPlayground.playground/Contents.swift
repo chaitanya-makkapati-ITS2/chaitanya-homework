@@ -87,30 +87,31 @@ let square = Square(sideLength: 4.0)
 print("Area of square: \(square.area)")
 
 /// A protocol representing a geometric shape.
-protocol Shape {
+protocol Shape2D {
     /// Calculates the area of the shape.
     /// - Returns: The area of the shape as a `Double`.
     func calculateArea() -> Double
 }
 
 /// An extension of the `Shape` protocol for volume calculations.
-extension Shape {
+protocol Shape3D {
+    /// Calculates the area of the shape.
+    /// - Returns: The area of the shape as a `Double`.
+    func calculateArea() -> Double
     /// Calculates the volume of the shape. Defaults to 0 for shapes without volume.
     /// - Returns: The volume of the shape as a `Double`.
-    func calculateVolume() -> Double {
-        return 0.0
-    }
+    func calculateVolume() -> Double 
 }
 
     // Structs were moved from inside the protocol extension to here
-    struct Circle: Shape {
+    struct Circle: Shape2D {
         var radius: Double
         func calculateArea() -> Double {
             return Double.pi * radius * radius
         }
     }
 
-    struct Rectangle: Shape {
+    struct Rectangle: Shape2D {
         var length: Double
         var width: Double
         func calculateArea() -> Double {
@@ -118,7 +119,7 @@ extension Shape {
         }
     }
 
-    struct Sphere: Shape {
+    struct Sphere: Shape3D {
         var radius: Double
         func calculateArea() -> Double {
             return 4 * Double.pi * radius * radius
