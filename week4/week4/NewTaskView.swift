@@ -14,35 +14,34 @@ struct NewTaskView: View {
     @State private var notes: String = ""
 
     var body: some View {
-        VStack(spacing: 20) {
-            // Task Title Input
-            VStack(alignment: .leading) {
-                Text("Task Title")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                TextField("Enter task title", text: $title)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
+        ScrollView {
+            
+            VStack(spacing: 20) {
+                // Task Title Input
+                VStack(alignment: .leading) {
+                    Text("Task Title")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    TextField("Enter task title", text: $title)
+                        .padding()
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(8)
+                    
+                    // Notes Input
+                    Text("Notes")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    // Minimum 5 lines height
+                    TextEditor(text: $notes)
+                        .frame(minHeight: 100)
+                        .padding()
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(8)
+                    
+                }
+                
+                
             }
-
-            // Notes Input
-            VStack(alignment: .leading) {
-                Text("Notes")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                TextEditor(text: $notes)
-                    .frame(minHeight: 120) // Minimum 5 lines height
-                    .padding(8)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                    )
-            }
-
-            Spacer()
         }
         .padding()
         .navigationTitle("Add New Task")
