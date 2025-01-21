@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct week5App: App {
+    @StateObject private var store = TaskStore()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
+                .environmentObject(store)
         }
     }
 }

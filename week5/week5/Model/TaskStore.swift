@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 /// A view model to manage the tasks.
 class TaskStore: ObservableObject {
@@ -16,3 +17,5 @@ class TaskStore: ObservableObject {
         tasks.append(Task(title: title, isCompleted: false, notes: notes, category: category))
     }
 }
+
+

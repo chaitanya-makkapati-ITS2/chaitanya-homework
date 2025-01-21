@@ -10,33 +10,9 @@
 		A14850362D36B39100B2A395 /* week5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = week5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A14850642D36BA9D00B2A395 /* Exceptions for "week5" folder in "week5" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				.swift,
-			);
-			target = A14850352D36B39100B2A395 /* week5 */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		A14850652D36BA9D00B2A395 /* Exceptions for "week5" folder in "Compile Sources" phase from "week5" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = A14850322D36B39100B2A395 /* Sources */;
-			membershipExceptions = (
-				.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A14850382D36B39100B2A395 /* week5 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A14850642D36BA9D00B2A395 /* Exceptions for "week5" folder in "week5" target */,
-				A14850652D36BA9D00B2A395 /* Exceptions for "week5" folder in "Compile Sources" phase from "week5" target */,
-			);
 			path = week5;
 			sourceTree = "<group>";
 		};

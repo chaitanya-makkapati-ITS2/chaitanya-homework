@@ -14,10 +14,11 @@ enum TaskCategory: String, CaseIterable {
     case uncategorized = "No Category"
 }
 
-struct Task: Identifiable {
+struct Task: Identifiable , Equatable {
     let id = UUID()
     var title: String
     var isCompleted: Bool
     var notes: String
     var category: TaskCategory
 }
+
