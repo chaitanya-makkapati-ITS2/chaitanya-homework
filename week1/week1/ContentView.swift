@@ -23,27 +23,54 @@ struct ContentView: View {
     
     /// The main body of the view.
     var body: some View {
-        VStack {
-            // Title
-            Text("Color Picker")
-                .font(.largeTitle)
+        GeometryReader { geometry in
             
-            // Display the generated color
-            RoundedRectangle(cornerRadius: 0)
-                .fill(generatedcolor)
-                .padding()
-            
-            // Sliders for adjusting the RGB values
-            Colorslider(Value: $redvalue , label: "Red")
-            Colorslider(Value: $greenvalue, label: "Green")
-            Colorslider(Value: $bluevalue, label: "Blue")
-            
-            // Button to set the color based on slider values
-            Button("Set Color") {
-                generatedcolor = Color(red: redvalue/255, green: greenvalue/255, blue: bluevalue/255)
+            if geometry.size.width < geometry.size.height {
+                VStack {
+                    Text("Color Picker")
+                        .font(.largeTitle)
+                    
+                    // Display the generated color
+                    RoundedRectangle(cornerRadius: 0)
+                        .fill(Color(red: redvalue/255, green: greenvalue/255, blue: bluevalue/255))
+                        .padding()
+                    Colorslider(Value: $redvalue , label: "Red")
+                    Colorslider(Value: $greenvalue, label: "Green")
+                    Colorslider(Value: $bluevalue, label: "Blue")
+                    
+                }.padding()
             }
+            
+            else {
+                VStack {
+                    Text("Color Picker")
+                        .font(.largeTitle)
+                    
+                    // Display the generated color
+                    RoundedRectangle(cornerRadius: 0)
+                        .fill(Color(red: redvalue/255, green: greenvalue/255, blue: bluevalue/255))
+                        .padding()
+                    HStack{
+                        Colorslider(Value: $redvalue , label: "Red")
+                        Colorslider(Value: $greenvalue, label: "Green")
+                        Colorslider(Value: $bluevalue, label: "Blue")
+                        //Button("Set Color") {
+                        //    generatedcolor = Color(red: redvalue/255, green: greenvalue/255, blue: bluevalue/255)
+                       // }
+                    }
+                }.padding()
+                
+                // Sliders for adjusting the RGB values
+                
+                
+                // Button to set the color based on slider values
+                
+            }
+            
+            
+            //
         }
-        .padding()
+        
     }
 }
 

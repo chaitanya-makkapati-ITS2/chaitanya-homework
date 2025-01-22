@@ -6,7 +6,7 @@
     @Section(title: "Steps to Build Sliders") {
         @ContentAndMedia {
             add 
-            @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+            @Image(source:previw.png, alt: "Color Slider App Preview")
         }
         @Steps {
             @Step {
@@ -14,7 +14,7 @@
 
                 @Code(name: "Add State Variables", file: "add-state-variables.swift"){
                     
-                    @Image(source:slider-demo.png, alt: "Color Slider App Preview")
+                    @Image(source:previw.png, alt: "Color Slider App Preview")
                     
                 }
             }

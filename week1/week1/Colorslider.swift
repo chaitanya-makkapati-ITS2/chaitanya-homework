@@ -27,7 +27,7 @@ struct Colorslider: View {
     var body: some View {
         HStack {
             // Label
-            Text("\(label):")
+            Text("\(label)")
             
             // Slider
             Slider(value: $Value, in: 0...255, step: 1)
