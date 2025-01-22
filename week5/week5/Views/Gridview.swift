@@ -9,23 +9,27 @@ import SwiftUI
 
 struct Gridview: View {
     @EnvironmentObject  var store: TaskStore
-    @State private var selectedCategory: TaskCategory? = nil
+    @State private var selectedCategory: Category? = nil
     var body: some View {
         NavigationStack {
             VStack {
                 // Grid for Categories
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                    ForEach(TaskCategory.allCases, id: \.self) { category in
+                    ForEach(Category.allCases, id: \.self) { category in
                         categoryCard(category: category)
                     }
                 }
                 .padding()
                 
                 // List of Tasks
-                List {
+                ScrollView {
                     ForEach(filteredTasksByCategory()) { task in
                         NavigationLink(destination: TaskDetailView(task: task, store: store)) {
-                            taskRow(task: task)
+                            VStack{
+                                taskRow(task: task)
+                                Divider()
+                            }
+                            .padding([.leading, .trailing], 20)
                         }
                     }
                 }
@@ -37,7 +41,7 @@ struct Gridview: View {
         return store.tasks.filter { $0.category == category }
     }
 
-    private func categoryCard(category: TaskCategory) -> some View {
+    private func categoryCard(category: Category) -> some View {
         VStack {
             Text(category.rawValue)
                 .font(.headline)
@@ -59,15 +63,15 @@ struct Gridview: View {
         }
     }
 
-    private func categoryColor(for category: TaskCategory) -> Color {
+    private func categoryColor(for category: Category) -> Color {
         switch category {
         case .work:
             return Color.blue
         case .personal:
             return Color.green
-        case .others:
+        case .home:
             return Color.orange
-        case .uncategorized:
+        case .noCategory:
             return Color.red
         }
     }

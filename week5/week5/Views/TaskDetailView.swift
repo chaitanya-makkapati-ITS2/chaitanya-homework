@@ -22,9 +22,9 @@ struct TaskDetailView: View {
             Toggle("Completed", isOn: $task.isCompleted)
                 .toggleStyle(SwitchToggleStyle(tint: .green))
                 .padding(.vertical, 10)
-                .onChange(of: task.isCompleted) { newValue in
+                .onChange(of: task.isCompleted) {
                     if let index = store.tasks.firstIndex(where: { $0.id == task.id }) {
-                        store.tasks[index].isCompleted = newValue
+                        store.tasks[index].isCompleted.toggle()
                     }
                 }
 

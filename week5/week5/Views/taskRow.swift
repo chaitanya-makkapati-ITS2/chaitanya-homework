@@ -9,6 +9,7 @@ import SwiftUI
 
 struct taskRow: View {
     @EnvironmentObject  var store: TaskStore
+    @State private var isCompleted: Bool = false
     var task: Task
     var body: some View {
         HStack {
@@ -16,22 +17,27 @@ struct taskRow: View {
                 .font(.body)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 8)
-            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+            Image(systemName: isCompleted ? "checkmark.circle.fill" : "circle")
                 .resizable()
                 .frame(width: 24, height: 24)
                 .foregroundColor(task.isCompleted ? .green : .red)
-                .rotationEffect(.degrees(task.isCompleted ? 360 : 0)) // Add rotation effect
-                .animation(.easeInOut(duration: 0.5), value: task.isCompleted) // Smooth animation
+                .rotationEffect(.degrees(isCompleted ? 360 : 0)) // Add rotation effect
                 .onTapGesture {
-                    withAnimation {
-                        if let index = store.tasks.firstIndex(where: { $0.id == task.id }) {
-                            store.tasks[index].isCompleted.toggle()
-                        }
+                    
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        isCompleted.toggle()
+                       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute:  {
+                            if let index = store.tasks.firstIndex(where: { $0.id == task.id }) {
+                                store.tasks[index].isCompleted.toggle()
+                            }
+                        })
+                        
+                        
                     }
                 }
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
+       // .background(Color(.secondarySystemBackground))
         .cornerRadius(8)
     }
 }

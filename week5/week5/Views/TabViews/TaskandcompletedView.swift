@@ -4,7 +4,6 @@
 //
 //  Created by Chaitanya Makkapati on 1/21/25.
 //
-
 import SwiftUI
 
 struct TaskandcompletedView: View {
@@ -12,23 +11,25 @@ struct TaskandcompletedView: View {
     @State private var searchText = ""
     var label: String
     var label2: String
-   @Binding var completionFilter: Bool
-    
-    
+    var completionFilter: Bool
     var body: some View {
         NavigationStack {
             VStack {
-                if filteredTasks(isCompleted: completionFilter).isEmpty {
+                if filteredTasks().isEmpty {
                     
                     Text("\(label)")
                         .font(.headline)
-                        .foregroundColor(.gray)
+                        //.foregroundColor(.gray)
                         .padding()
                 } else {
-                    List {
-                        ForEach(filteredTasks(isCompleted: completionFilter)) { task in
+                    ScrollView {
+                        ForEach(filteredTasks()) { task in
                             NavigationLink(destination: TaskDetailView(task: task, store: store)) {
-                                taskRow(task: task)
+                                VStack {
+                                    taskRow(task: task)
+                                    Divider()
+                                }
+                                .padding([.leading, .trailing], 20)
                             }
                         }
                     }
@@ -49,9 +50,8 @@ struct TaskandcompletedView: View {
         }
     }
         
-        private func filteredTasks(isCompleted: Bool) -> [Task] {
-            
-            store.tasks.filter { $0.isCompleted == isCompleted && (searchText.isEmpty || $0.title.localizedCaseInsensitiveContains(searchText)) }
+        private func filteredTasks() -> [Task] {
+            store.tasks.filter { $0.isCompleted == completionFilter && (searchText.isEmpty || $0.title.localizedCaseInsensitiveContains(searchText)) }
         }
         
         

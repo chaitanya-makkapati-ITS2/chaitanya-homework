@@ -12,34 +12,35 @@ struct NewTaskView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title: String = ""
     @State private var notes: String = ""
-    @State private var selectedCategory: TaskCategory = .uncategorized // Default category
+    @State private var selectedCategory: Category = .noCategory // Default category
+
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                textview(label: "Task Title")
-                TextField("Enter a task title", text: $title)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                textview( label: "Notes")
-                TextEditor(text: $notes)
-                    .frame(minHeight: 100)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                textview(label: "Category")
-                Picker("Select Category", selection: $selectedCategory) {
-                    ForEach(TaskCategory.allCases, id: \.self) { category in
-                        Text(category.rawValue).tag(category)
-                    }
+        NavigationStack {
+            
+            
+            Form {
+
+                Section(header: Text("Task Title"))
+                {
+                    TextField("Enter a task title", text: $title)
                 }
-                .pickerStyle(MenuPickerStyle())
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
+                Section(header: Text("Notes"))
+                {
+                    TextEditor(text: $notes)
+                        .frame(minHeight: 100)
+                }
+                Section(header: Text("Category"))
+                {
+                    Picker("Select Category", selection: $selectedCategory) {
+                        ForEach(Category.allCases, id: \.self) { category in
+                            Text(category.rawValue).tag(category)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    
+                }
             }
         }
-        .padding()
         .navigationTitle("Add New Task")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)

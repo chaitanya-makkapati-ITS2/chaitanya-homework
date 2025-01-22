@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum TaskCategory: String, CaseIterable {
+enum Category: String, CaseIterable {
     case work = "Work"
     case personal = "Personal"
-    case others = "Home"
-    case uncategorized = "No Category"
+    case home = "Home"
+    case noCategory = "No Category"
 }
 
 struct Task: Identifiable , Equatable {
@@ -19,6 +19,6 @@ struct Task: Identifiable , Equatable {
     var title: String
     var isCompleted: Bool
     var notes: String
-    var category: TaskCategory
+    var category: Category
 }
 
