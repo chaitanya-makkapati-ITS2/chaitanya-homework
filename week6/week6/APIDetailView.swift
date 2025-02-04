@@ -13,15 +13,14 @@ struct APIDetailView: View {
 
     var body: some View {
         VStack {
-            if let url = URL(string: entry.link) {
-                WebView(url: url) // Embed the WebView
+            if let link = entry.link, let url = URL(string: link) {
+                WebView(url: url)
             } else {
-                Text("Invalid URL")
+                Text("Invalid or missing URL")
                     .foregroundColor(.red)
             }
         }
-        .navigationTitle(entry.api) // Display the API name as the title
+        .navigationTitle(entry.api ?? "API Details")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-

@@ -8,21 +8,21 @@
 import Foundation
 
 
-struct APIResponse: Codable {
+struct APIList: Codable {
     let count: Int
     let entries: [APIEntry]
 }
 
 
-struct APIEntry: Codable, Identifiable {
+struct APIEntry: Identifiable, Codable {
     var id: UUID { UUID() }
-    let api: String
-    let description: String
-    let auth: String
-    let https: Bool
-    let cors: String
-    let link: String
-    let category: String
+    let api: String?
+    let description: String?
+    let auth: String?
+    let https: Bool?
+    let cors: String?
+    let link: String?
+    let category: String?
 
     enum CodingKeys: String, CodingKey {
         case api = "API"
@@ -34,3 +34,18 @@ struct APIEntry: Codable, Identifiable {
         case category = "Category"
     }
 }
+
+
+extension APIEntry {
+    init(from entity: APIEntity) {
+        self.api = entity.api ?? "Unknown API"
+        self.description = entity.descriptionText ?? ""
+        self.auth = entity.auth ?? "No Auth"  // Provide a default value
+        self.https = entity.https
+        self.cors = entity.cors ?? ""
+        self.link = entity.link ?? ""
+        self.category = entity.category ?? ""
+    }
+}
+
+

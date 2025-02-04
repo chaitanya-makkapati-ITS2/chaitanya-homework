@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var entries: [APIEntry] = []
-    private let store = JSONStore()
+    @State private var entries: [APIEntity] = []
 
     var body: some View {
         NavigationView {
-            List(entries, id: \.id) { entry in
-                NavigationLink(destination: APIDetailView(entry: entry)) {
-                    Text(entry.api) // Display API name
+            List(entries, id: \.objectID) { entity in
+                NavigationLink(destination: APIDetailView(entry: APIEntry(from: entity))) {
+                    Text(entity.api ?? "Unknown API")
                 }
             }
             .navigationTitle("API List")
@@ -24,12 +23,20 @@ struct ContentView: View {
     }
 
     private func loadData() {
-        if let savedEntries = store.loadJSON() {
-            entries = savedEntries
-        } else {
-            entries = []
+        
+        entries = CoreDataManager.shared.fetchEntries()
+        
+        if entries.isEmpty {
+            print("No Core Data entries found. Loading apilist.json...")
+            if let jsonEntries = loadEntriesFromJSON() {
+                CoreDataManager.shared.saveEntries(jsonEntries)
+                entries = CoreDataManager.shared.fetchEntries()
+            } else {
+                print("Failed to load entries from apilist.json")
+            }
         }
     }
+
 }
 
 #Preview {
